@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
+  postedBy:{
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true
@@ -18,10 +26,10 @@ const jobSchema = new mongoose.Schema({
     required: true
   },
   duration: {
-    type: Number
+    type: String
   },
   salary: {
-    type: Number
+    type: String
   },
   requirements: {
     type: String
@@ -31,7 +39,7 @@ const jobSchema = new mongoose.Schema({
     default: Date.now
   },
   deadline: {
-    type: Date
+    type: String
   }
 });
 

@@ -26,6 +26,26 @@ const createPost = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  const userId = req.user.userId;
+  const postId= req.params.postId;
+  try {
+      let post = await Post.findById(postId);
+
+      if (!post) { return res.status(404).send("Not Found") }
+
+      if (post.userId.toString() !== userId) {
+        return res.status(401).send("Not Allowed");
+      }
+      post = await Post.findByIdAndDelete(postId);
+      res.json({Succes:"post has been deleted"});
+  }
+  catch (error) {
+      console.error(error.message);
+      res.status(500).json().send("some internal server error occured");
+  }
+}
+
 /* READ */
 const getFeedPosts = async (req, res) => {
   try {
@@ -72,4 +92,4 @@ const likePost = async (req, res) => {
   }
 };
 
-module.exports = {createPost,getFeedPosts,getUserPosts,likePost}
+module.exports = {createPost,getFeedPosts,getUserPosts,likePost,deletePost}

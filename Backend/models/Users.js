@@ -32,6 +32,14 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    designaton:{
+      type: String,
+      default: ""
+    },
+    WorkingProf:{
+      type: Boolean,
+      default: false
+    },
     location: String,
     occupation: String,
     viewedProfile: Number,

@@ -14,6 +14,8 @@ const signUp = async (req,res)=>{
             password,
             picturePath,
             friends,
+            designation,
+            WorkingProf,
             location,
             occupation,
         } = req.body;
@@ -37,6 +39,8 @@ const signUp = async (req,res)=>{
             password: secPass,
             picturePath,
             friends,
+            designation,
+            WorkingProf,
             location,
             occupation,
             viewedProfile: Math.floor(Math.random() * 10000),
